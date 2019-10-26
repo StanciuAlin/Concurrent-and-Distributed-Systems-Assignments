@@ -26,9 +26,9 @@ public class Main {
         }
 //        System.out.println(ConcurrentCounterThread.n);
 //        test condition
-        if(ConcurrentCounterThread.n != 20) {
-            throw new IllegalArgumentException("The value for n is incorrect");
-        }
+//        if(ConcurrentCounterThread.n != 20) {
+//            throw new IllegalArgumentException("The value for n is incorrect");
+//        }
 
         StoreResultCSV.InitWritingCSV();
         for(int i = 0; i < 10; i++) {

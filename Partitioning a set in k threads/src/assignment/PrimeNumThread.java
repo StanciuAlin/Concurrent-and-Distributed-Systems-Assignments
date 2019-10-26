@@ -11,6 +11,8 @@ import java.util.ArrayList;
  * Special class which extends Thread class and find all prime numbers in a range
  */
 public class PrimeNumThread extends Thread implements IPrime, IOutput {
+
+    static ArrayList<ArrayList<Integer> > outputAllPrimeNumbersSaved = new ArrayList<ArrayList<Integer> >(0);
     /**
      * For a range, represent inferior limit
      */
@@ -60,6 +62,8 @@ public class PrimeNumThread extends Thread implements IPrime, IOutput {
         }
         //print all prime numbers
         Print(allPrimeNumberFromPartition);
+        //and save data
+        SaveOutput(allPrimeNumberFromPartition);
     }
 
     /**
@@ -114,5 +118,18 @@ public class PrimeNumThread extends Thread implements IPrime, IOutput {
             System.out.print(array.get(iterator) + " ");
         }
         System.out.print("\n\n");
+    }
+
+    /**
+     * Save in memory an array given as a parameter
+     * @param array Array to save
+     */
+    @Override
+    public void SaveOutput(ArrayList<Integer> array) {
+        ArrayList<Integer> currentPrimeNumbers = new ArrayList<>(0);
+        for(int iterator = 0; iterator < array.size(); ++iterator) {
+            currentPrimeNumbers.add(array.get(iterator));
+        }
+        outputAllPrimeNumbersSaved.add(currentPrimeNumbers);
     }
 }

@@ -27,4 +27,10 @@ public interface IOutput {
      * @param array Input array
      */
     void Print(ArrayList<Integer> array);
+
+    /**
+     * Save in memory an array given as a parameter
+     * @param array Array to save
+     */
+    void SaveOutput(ArrayList<Integer> array);
 }

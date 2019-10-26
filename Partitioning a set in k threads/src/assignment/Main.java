@@ -6,6 +6,7 @@
 package assignment;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -118,6 +119,7 @@ public class Main {
 
     /**
      * This is the starting point for lab assignment
+     * If you want to test the output, uncomment from 134 to 142 line and run the app
      * @param args Main function command line arguments
      */
     public static void main(String[] args) {
@@ -129,6 +131,15 @@ public class Main {
         do {
             try {
                 flag = ChooseAction();
+//                TestOutput test = new TestOutput();
+//                ArrayList<ArrayList<Integer> > aList = new ArrayList<ArrayList<Integer>>();
+//                boolean Test = test.testOutput(PrimeNumThread.outputAllPrimeNumbersSaved);
+//                if (Test) {
+//                    System.out.println("Output OK");
+//                }
+//                else {
+//                    System.out.println("Output NOK");
+//                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class PrimeNumThread extends Thread implements IPrime, IOutput {
 
-    static ArrayList<ArrayList<Integer> > outputAllPrimeNumbersSaved = new ArrayList<ArrayList<Integer> >(0);
+    static volatile ArrayList<ArrayList<Integer> > outputAllPrimeNumbersSaved = new ArrayList<ArrayList<Integer> >(0);
     /**
      * For a range, represent inferior limit
      */

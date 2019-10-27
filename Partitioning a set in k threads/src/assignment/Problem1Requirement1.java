@@ -131,11 +131,11 @@ public class Problem1Requirement1 implements IStopwatch, IRandomGenerator, IPart
     public void SetValues() {
         Random rand = new Random();
         do {
-            this.n = rand.nextInt(10000);     //value may be bigger than 10000, but is set equal with max range from Problem1Requirement1
-            this.k = rand.nextInt(10000);     //value may be bigger than 10000, but is set equal with max range from Problem1Requirement1
+            this.n = rand.nextInt(1000000);     //value may be bigger than 10000, but is set equal with max range from Problem1Requirement1
+            this.k = rand.nextInt(1000) + 2;     //value may be bigger than 10000, but is set equal with max range from Problem1Requirement1
         }while(k >= n);
-        //this.n = 22;
-        //this.k = 5;
+//        this.n = 14;
+//        this.k = 5;
     }
 
     /**

@@ -36,6 +36,23 @@ public final class TestOutput implements IPrime{
         return true;
     }
 
+    public static boolean testOutputsBothRequirements(ArrayList<ArrayList<Integer>> output1, ArrayList<ArrayList<Integer>> output2) {
+
+        if(output1.size() == 0 || output2.size() == 0) {
+            throw new IllegalArgumentException("Empty output");
+        }
+
+        for(int iterator = 0; iterator < output1.size(); ++iterator) {
+            if(output1.get(iterator).size() > 0) {
+                if(!output1.get(iterator).equals(output2.get(iterator))) {
+                    throw new ArrayStoreException("The lists differ!");
+                }
+            }
+        }
+
+        return true;
+    }
+
     /**
      * Check if a given value is a prime number
      * @param value The number to check if it is prime

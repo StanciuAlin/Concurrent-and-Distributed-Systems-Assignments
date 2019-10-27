@@ -131,6 +131,10 @@ public class Main {
         do {
             try {
                 flag = ChooseAction();
+
+                /*
+                 * Uncomment only if you want to test output
+                 */
 //                TestOutput test = new TestOutput();
 //                ArrayList<ArrayList<Integer> > aList = new ArrayList<ArrayList<Integer>>();
 //                boolean Test = test.testOutput(PrimeNumThread.outputAllPrimeNumbersSaved);
@@ -140,6 +144,7 @@ public class Main {
 //                else {
 //                    System.out.println("Output NOK");
 //                }
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

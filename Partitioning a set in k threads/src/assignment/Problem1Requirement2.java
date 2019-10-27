@@ -69,10 +69,11 @@ public class Problem1Requirement2 implements IStopwatch, IRandomGenerator, IPart
         for(iterator = 0; iterator <= n; ++iterator) {
             m.add(iterator);
         }
-        for(iterator = 2; iterator * (k + 1) <= n; ++iterator ) {
+        for(iterator = 2; iterator * (k + 1) <= m.size(); ++iterator ) {
             //m.remove(iterator * (k + 1) - 1);
             m.remove(iterator * (k + 1));
         }
+
 
         Integer[][] setPartitioned = new Integer[k+1][k];
         setPartitioned = ConstructPartition(m);
@@ -136,7 +137,7 @@ public class Problem1Requirement2 implements IStopwatch, IRandomGenerator, IPart
     @Override
     public void PrintExecutionTime() {
         System.out.println("\t\t\t\t\t************************************************************");
-        System.out.print("\t\t\t\t\t* Total time execution for problem 1, a is " + GetLastTimeExecutionMillis() + " ms *\n");
+        System.out.print("\t\t\t\t\t* Total time execution for problem 1, b is " + GetLastTimeExecutionMillis() + " ms *\n");
         System.out.println("\t\t\t\t\t************************************************************");
     }
 
@@ -156,11 +157,11 @@ public class Problem1Requirement2 implements IStopwatch, IRandomGenerator, IPart
     public void SetValues() {
         Random rand = new Random();
         do {
-            this.n = rand.nextInt(10000);   //value bigger overflow Java heap, because of using static array
-            this.k = rand.nextInt(10000);   //value bigger overflow Java heap, because of using static array
+            this.n = rand.nextInt(1000000);   //value bigger overflow Java heap, because of using static array
+            this.k = rand.nextInt(1000) + 2;   //value bigger overflow Java heap, because of using static array
         }while(k >= n);
-        //this.n = 14;
-        //this.k = 5;
+//        this.n = 100;
+//        this.k = 5;
     }
 
     /**
@@ -182,17 +183,18 @@ public class Problem1Requirement2 implements IStopwatch, IRandomGenerator, IPart
     @Override
     public Integer[][] ConstructPartition(ArrayList<Integer> m) {
 
-        Integer[][] m_j = new Integer[k+1][k];                                     //in m_j retain the k partitions of set m
+        Integer[][] m_j = new Integer[k + 1][n];                                     //in m_j retain the k partitions of set m
 
-        if(m.indexOf(this.k + 1) != -1) {                                          //check k + 1 values exist in m set
+        if (m.indexOf(this.k + 1) != -1) {                                          //check k + 1 values exist in m set
             int numberOfThreads = m.get(m.indexOf(this.k + 1));                    //if exist, get it
+            m_j[1][0] = numberOfThreads;
             m.remove(numberOfThreads);                                             //and remove it from set
         }
 
         //partitioning the initial set in k subsets
 
         for(int iteratorSubSet = 0; iteratorSubSet < k; ++iteratorSubSet) {        //iterate in all k threads to create his subset
-            for(int iteratorThread = 0; iteratorThread < k; ++iteratorThread) {    //iterate in every thread to the maximum k-th value
+            for(int iteratorThread = 0; iteratorThread < n; ++iteratorThread) {    //iterate in every thread to the maximum k-th value
                 //m_j[iteratorThread][iteratorSubSet] = m.get(indexElementSet++);
                 int currentValue = (k + 1) * iteratorThread + iteratorSubSet + 1;  //retain the value which follow problem statement
                 if (currentValue <= n) {                                           //if this value is less or equal than maximum possible value, n
@@ -200,8 +202,7 @@ public class Problem1Requirement2 implements IStopwatch, IRandomGenerator, IPart
                 }
             }
         }
-        //by problem statement, k + 1 value belong M1 subset
-        m_j[1][k-1] = k + 1;                                                       //by convention (problem statement), value k + 1 belong to Thread 1
+        //by problem statement, k + 1 value belong M1 subset         //by convention (problem statement), value k + 1 belong to Thread 1
 
         return m_j;                                                                //return all k threads with values partitioned from m array
     }
